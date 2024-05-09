@@ -1,0 +1,9 @@
+netwitness:
+        settings:
+                host: '10.40.128.10'
+                port: '50103'
+                path: 'sdk'
+                ssl: 'enabled'
+        auth:
+                user: 'admin'
+                pass: 'netwitness'
