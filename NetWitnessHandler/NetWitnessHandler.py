@@ -268,7 +268,11 @@ class NWHandler:
 # main
 # Command-line driver method when used as utility rather than module
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+       prog='NetWitnessHandler.py',
+       description='Middleware library for querying the NetWitness RESTful API',
+       epilog=''
+       )
     parser.add_argument('-s', '--size', help='Number of aggregated results to return', metavar='<size>', type=int, default=20)
     parser.add_argument('-f', '--fields', help='Meta Fields to Return as Aggregate Query Result', metavar='<meta field>', nargs='*', required=False)
     parser.add_argument('-w', '--where', help='WHERE Clause for Aggregate Query Filter (single quoted, with values double quoted as necessary - ex: \'action="createprocess" && alias.host="testhost1"\'', metavar='<meta=value OR || OR &&>', default='')
