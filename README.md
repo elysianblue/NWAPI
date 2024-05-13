@@ -14,7 +14,8 @@ Scripts for interacting with NetWitness API
 ### nwhandler_config.yaml
 - YAML config file containing NetWitness host, SDK port, SSL config, and credential information
 
-## nwrest-api.py
+## NWREST-API Flask API App
+### nwrest-api.py
 - Basic Flask REST API app with endpoints mapped to the NWDB query methods provided in NetWitnessHandler.py
 - Endpoints:
     - `/api/queryNWDB`
