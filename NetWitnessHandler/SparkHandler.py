@@ -85,7 +85,7 @@ class SparkHandler:
             .enableHiveSupport() \
             .getOrCreate()
         
-        print(self.spark.sparkContext())
+        
 
     def createQueryArg(self, query):
         query = "select sessionid where direction=\"outbound\" && service=80 && action=\"post\" && extension=\"php\" && time=\"2020-jan-01 00:00:00\"-u"
