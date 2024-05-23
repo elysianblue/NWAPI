@@ -140,6 +140,7 @@ class SparkHandler:
 
     def formatMetaResults(self, result_df):
         test_df = result_df.select(explode(result_df.result))
+        print(test_df.show(10))
 
         #test_df = test_df.withColumn('results',test_df.col['results'])
 
@@ -222,8 +223,8 @@ def main():
         #print(resList_df.show(10))
         metaResults = nwdb.formatMetaResults(resList_df)
         print(metaResults.show(10))
-        pivotResults = nwdb.formatMetaResultsPivot(resList_df)
-        print(pivotResults.show(10))
+        #pivotResults = nwdb.formatMetaResultsPivot(resList_df)
+        #print(pivotResults.show(10))
         nwdb.sparkStop()
         
     elif args.size and args.fields and args.where:
