@@ -41,6 +41,7 @@ class SparkHandler:
             self.url = f"https://{self.config['netwitness']['settings']['host']}:{self.config['netwitness']['settings']['port']}/{self.config['netwitness']['settings']['path']}"
         else:
             self.url = f"http://{self.config['netwitness']['settings']['host']}:{self.config['netwitness']['settings']['port']}/{self.config['netwitness']['settings']['path']}"
+        self.rest_udf = udf(SparkHandler.executeRestApi, ArrayType(MapType(StringType(), StringType())))
 
     # Read nwhandler_config.yaml config file and return parsed object
     # * Reads provided YAML config file and loads into parsed object to return
@@ -54,7 +55,8 @@ class SparkHandler:
       except Exception as e:
           print('SparkHandler::readConfig() Exception => ' + str(e) + '\n')
 
-    def executeRestApi(self, verb, url, query):
+    @staticmethod
+    def executeRestApi(verb, url, query):
         res = None
         res_list = []
         query_args = { 'msg': 'query', 'query': query, 'id1': 0, 'id2': 0, 'force-content-type': 'application/json' }
@@ -119,11 +121,11 @@ class SparkHandler:
             StructField('results', MapType(StringType(), ArrayType(MapType(StringType(), StringType())))) \
         ])
 
-        bcast_udf = self.executeRestApi
-        udf_executeRestApi = udf(bcast_udf,ArrayType(MapType(StringType(), StringType())))
+        #bcast_udf = self.executeRestApi
+        #udf_executeRestApi = udf(bcast_udf,ArrayType(MapType(StringType(), StringType())))
 
         result_df = request_df \
-            .withColumn('result', udf_executeRestApi(col('verb'), col('url'), col('query')))
+            .withColumn('result', self.rest_udf(col('verb'), col('url'), col('query')))
         
         return result_df
     
