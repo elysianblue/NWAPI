@@ -78,7 +78,7 @@ class SparkHandler:
         
         return None
 
-    def startSparkSession(self, appName="NWAPI", sparkMaster="spark://172.30.30.61:49154"):
+    def startSparkSession(self, appName="NWAPI", sparkMaster="spark://172.30.30.69:7077"):
         self.spark = SparkSession.builder \
             .appName(appName) \
             .master(sparkMaster) \
