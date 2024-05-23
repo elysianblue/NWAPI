@@ -1,6 +1,6 @@
 netwitness:
         settings:
-                host: '10.40.128.10'
+                host: '172.30.254.200'
                 port: '50103'
                 path: 'sdk'
                 ssl: 'enabled'

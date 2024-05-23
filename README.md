@@ -2,6 +2,16 @@
 Scripts for interacting with NetWitness API
 
 ## NetWitnessHandler
+- TODO:
+    - Pagination
+    - Content
+    - Meta Text Search
+    - Payload Text Search
+    - Distrib Query
+    - Timeline
+    - Query Validation
+    - Values
+    
 ### NetWitnessHandler.py
 - Query NWDB via Restful API and convert results to session objects
 - Query NWDB to aggregate meta fields given WHERE condition
