@@ -119,7 +119,8 @@ class SparkHandler:
             StructField('results', MapType(StringType(), ArrayType(MapType(StringType(), StringType())))) \
         ])
 
-        udf_executeRestApi = udf(self.executeRestApi,ArrayType(MapType(StringType(), StringType())))
+        bcast_udf = self.executeRestApi
+        udf_executeRestApi = udf(bcast_udf,ArrayType(MapType(StringType(), StringType())))
 
         result_df = request_df \
             .withColumn('result', udf_executeRestApi(col('verb'), col('url'), col('query')))
