@@ -219,7 +219,9 @@ def main():
         #    sList.extend(i['value'])
         #print(sList)
         resList_df = nwdb.sparkMetaQuery(sessionList)
-        print(resList_df.show(10))
+        #print(resList_df.show(10))
+        metaResults = nwdb.formatMetaResults(resList_df)
+        print(metaResults.show(10))
         nwdb.sparkStop()
         
     elif args.size and args.fields and args.where:
