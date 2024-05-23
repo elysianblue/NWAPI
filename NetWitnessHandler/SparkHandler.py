@@ -145,6 +145,7 @@ class SparkHandler:
         #test_df = test_df.withColumn('results',test_df.col['results'])
 
         new_res_df = test_df.select(test_df.col['group'].alias('group'), test_df.col['type'].alias('type'), test_df.col['value'].alias('value')).groupBy('group').pivot('type').agg(collect_list('value'))
+        print(new_res_df.show(10))
         
         return new_res_df
 
