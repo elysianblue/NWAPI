@@ -221,6 +221,9 @@ def main():
         print(sessionList[0])
         print(type(sessionList[0]))
         print(len(sessionList))
+        for i in sessionList:
+            print(len(i))
+            print(type(i))
         #sList = []
         #for i in sessionList:
         #    sList.extend(i['value'])
