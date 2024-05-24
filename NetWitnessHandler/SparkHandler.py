@@ -115,7 +115,7 @@ class SparkHandler:
     def sparkMetaQuery(self, response):
         RestApiRequestRow = Row("verb", "url", "query")
 
-        request_df = self.spark.createDataFrame(list(self.sessionIdRequestGen(response)), RestApiRequestRow)
+        request_df = self.spark.createDataFrame(self.sessionIdRequestGen(response), RestApiRequestRow)
 
         schema = StructType([ \
             StructField('flags', IntegerType(), True), \
