@@ -58,6 +58,7 @@ class SparkHandler:
     @staticmethod
     def executeRestApi(verb, url, query):
         res = None
+        rec = {}
         res_list = []
         query_args = { 'msg': 'query', 'query': query, 'id1': 0, 'id2': 0, 'force-content-type': 'application/json' }
         try:
