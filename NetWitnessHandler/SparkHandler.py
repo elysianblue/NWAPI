@@ -75,7 +75,8 @@ class SparkHandler:
             #return res_tot[0]['results']['fields']
             for i in res.json():
                 for j in i['results']['fields']:
-                    res_list.append(j)
+                    rec = { 'group': j['group'], 'type': j['type'], 'value': j['value'] }
+                    res_list.append(rec)
                     
             return res_list
             #return res.json()
