@@ -82,11 +82,11 @@ class SparkHandler:
                     rec_list.append(rec)
                     rec = {}
                 #print(rec_list)
-                res_list.extend(rec_list)
-                rec_list = []
+                #res_list.extend(rec_list)
+                #rec_list = []
             #print(res_list)
                     
-            return res_list
+            return rec_list
             #return res.json()
         
         return None
