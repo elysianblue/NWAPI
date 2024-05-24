@@ -225,6 +225,7 @@ def main():
         for i in sessionList:
             print(len(i))
             print(type(i))
+            print(i.keys())
         #sList = []
         #for i in sessionList:
         #    sList.extend(i['value'])
