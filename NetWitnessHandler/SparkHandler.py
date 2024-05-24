@@ -55,6 +55,42 @@ class SparkHandler:
       except Exception as e:
           print('SparkHandler::readConfig() Exception => ' + str(e) + '\n')
 
+    def sessionQuery(verb, url, query):
+        res = None
+        rec = {}
+        rec_list = []
+        res_list = []
+        query_args = { 'msg': 'query', 'query': query, 'id1': 0, 'id2': 0, 'force-content-type': 'application/json' }
+        try:
+            if verb == 'get':
+                res = requests.get(url, params=query_args, auth=HTTPBasicAuth('admin', 'netwitness'), verify=False)
+            elif verb == 'post':
+                res = requests.post(url, params=query_args, auth=HTTPBasicAuth('admin', 'netwitness'), verify=False)
+            else:
+                print('Only get and post supported.')
+        except Exception as e:
+            return e
+        
+        if res != None and res.status_code == 200:
+            #res_tot = json.loads(res.text)
+            #return res_tot[0]['results']['fields']
+            for i in res.json():
+                rec = {}
+                for j in i['results']['fields']:
+                    #rec = { 'group': j['group'], 'type': j['type'], 'value': j['value'] }
+                    rec.update({ j['type']: j['value'] })
+                    rec_list.append(rec)
+                    rec = {}
+                #print(rec_list)
+                #res_list.extend(rec_list)
+                #rec_list = []
+            #print(res_list)
+                    
+            return rec_list
+            #return res.json()
+        
+        return None
+
     @staticmethod
     def executeRestApi(verb, url, query):
         res = None
@@ -106,7 +142,7 @@ class SparkHandler:
 
         query_args = { 'msg': 'query', 'query': query, 'id1': 0, 'id2': 0, 'force-content-type': 'application/json' }
 
-        response = self.executeRestApi('get', self.url, query)
+        response = self.sessionQuery('get', self.url, query)
 
         return response
 
