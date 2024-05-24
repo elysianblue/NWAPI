@@ -81,10 +81,10 @@ class SparkHandler:
                     rec.update({ j['type']: j['value'] })
                     rec_list.append(rec)
                     rec = {}
-                print(rec_list)
+                #print(rec_list)
                 res_list.extend(rec_list)
                 rec_list = []
-            print(res_list)
+            #print(res_list)
                     
             return res_list
             #return res.json()
@@ -134,7 +134,7 @@ class SparkHandler:
         #udf_executeRestApi = udf(bcast_udf,ArrayType(MapType(StringType(), StringType())))
 
         result_df = request_df \
-            .withColumn('result', self.rest_udf(col('verb'), col('url'), col('query')))
+            .withColumn('result', explode(self.rest_udf(col('verb'), col('url'), col('query'))))
         
         return result_df
     
