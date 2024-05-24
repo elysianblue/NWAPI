@@ -124,7 +124,7 @@ class SparkHandler:
                 #rec_list = []
             #print(res_list)
                     
-            return rec_list[0]
+            return Row(**rec_list)
             #return rec
             #return res.json()
         
