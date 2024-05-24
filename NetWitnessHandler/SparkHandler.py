@@ -187,15 +187,15 @@ class SparkHandler:
 
     def formatMetaResults(self, result_df):
         test_df = result_df.select(explode(result_df.result))
-        print(test_df.show(10, truncate=False))
+        print(test_df.show(1, truncate=False))
         #test2_df = test_df.select(explode(test_df.col))
         #print(test2_df.show(10))
         test2_df = test_df.select(explode(test_df.col))
-        print(test2_df.show(10, truncate=False))
+        print(test2_df.show(1, truncate=False))
         #test3_df = test2_df.withColumn('record', test2_df.col['fields'])
         #print(test3_df.show(10))
         new_res_df = test_df.select(test_df.col['group'].alias('group'), test_df.col['type'].alias('type'), test_df.col['value'].alias('value')).groupBy('group').pivot('type').agg(collect_list('value'))
-        print(new_res_df.show(10, truncate=False))
+        print(new_res_df.show(1, truncate=False))
 
         return new_res_df
 
@@ -279,8 +279,8 @@ def main():
         #print(sList)
         resList_df = nwdb.sparkMetaQuery(sessionList)
         print(resList_df.select(resList_df['result']).show(1, truncate=False))
-        #metaResults = nwdb.formatMetaResults(resList_df)
-        #print(metaResults.show(10, truncate=False))
+        metaResults = nwdb.formatMetaResults(resList_df)
+        print(metaResults.show(1, truncate=False))
         #pivotResults = nwdb.formatMetaResultsPivot(resList_df)
         #print(pivotResults.show(10))
         nwdb.sparkStop()
