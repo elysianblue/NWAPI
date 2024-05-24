@@ -101,9 +101,7 @@ class SparkHandler:
 
     def sessionIdResponseGen(self, response):
         for i in response:
-            for j in i['results']['fields']:
-                if len(j) != 0:
-                    yield(j['value'])
+            yield(i['value'])
 
     #sessionIdList = sessionIdResponseGen(response)
 
@@ -219,19 +217,19 @@ def main():
               print(f"query: {args.query}")
         nwdb.startSparkSession()
         sessionList = nwdb.createQueryArg(args.query)
-        print(sessionList[0])
-        print(type(sessionList[0]))
-        print(len(sessionList))
-        for i in sessionList:
-            print(len(i))
-            print(type(i))
-            print(i.keys())
+        #print(sessionList[0])
+        #print(type(sessionList[0]))
+        #print(len(sessionList))
+        #for i in sessionList:
+        #    print(len(i))
+        #    print(type(i))
+        #    print(i.keys())
         #sList = []
         #for i in sessionList:
         #    sList.extend(i['value'])
         #print(sList)
-        #resList_df = nwdb.sparkMetaQuery(sessionList)
-        #print(resList_df.show(10))
+        resList_df = nwdb.sparkMetaQuery(sessionList)
+        print(resList_df.show(10))
         #metaResults = nwdb.formatMetaResults(resList_df)
         #print(metaResults.show(10))
         #pivotResults = nwdb.formatMetaResultsPivot(resList_df)
