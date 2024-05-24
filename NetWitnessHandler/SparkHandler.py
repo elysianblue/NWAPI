@@ -95,7 +95,7 @@ class SparkHandler:
     def executeRestApi(verb, url, query):
         res = None
         rec = {}
-        rec_list = []
+        rec_list = {}
         res_list = []
         query_args = { 'msg': 'query', 'query': query, 'id1': 0, 'id2': 0, 'force-content-type': 'application/json' }
         try:
@@ -117,7 +117,7 @@ class SparkHandler:
                     #rec = { 'group': j['group'], 'type': j['type'], 'value': j['value'] }
                     #rec.update({ j['type']: j['value'] })
                     rec[j['type']] = j['value']
-                rec_list.append(rec)
+                rec_list.update(rec)
                     #rec = {}
                 #print(rec_list)
                 #res_list.extend(rec_list)
