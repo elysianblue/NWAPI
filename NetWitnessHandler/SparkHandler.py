@@ -41,7 +41,7 @@ class SparkHandler:
             self.url = f"https://{self.config['netwitness']['settings']['host']}:{self.config['netwitness']['settings']['port']}/{self.config['netwitness']['settings']['path']}"
         else:
             self.url = f"http://{self.config['netwitness']['settings']['host']}:{self.config['netwitness']['settings']['port']}/{self.config['netwitness']['settings']['path']}"
-        self.rest_udf = udf(SparkHandler.executeRestApi, MapType(StringType(), StringType()))
+        self.rest_udf = udf(SparkHandler.executeRestApi, ArrayType(MapType(StringType(), StringType())))
 
     # Read nwhandler_config.yaml config file and return parsed object
     # * Reads provided YAML config file and loads into parsed object to return
