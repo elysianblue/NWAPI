@@ -142,7 +142,7 @@ class SparkHandler:
         print(test_df.show(10))
         #test2_df = test_df.select(explode(test_df.col))
         #print(test2_df.show(10))
-        test2_df = test_df.select(explode(test_df.col['results']))
+        test2_df = test_df.select(explode(test_df.col))
         print(test2_df.show(10))
         #test3_df = test2_df.withColumn('record', test2_df.col['fields'])
         #print(test3_df.show(10))
