@@ -134,7 +134,7 @@ class SparkHandler:
         #udf_executeRestApi = udf(bcast_udf,ArrayType(MapType(StringType(), StringType())))
 
         result_df = request_df \
-            .withColumn('result', explode(self.rest_udf(col('verb'), col('url'), col('query'))))
+            .withColumn('result', self.rest_udf(col('verb'), col('url'), col('query')))
         
         return result_df
     
@@ -240,7 +240,7 @@ def main():
         #    sList.extend(i['value'])
         #print(sList)
         resList_df = nwdb.sparkMetaQuery(sessionList)
-        print(resList_df.show(1, truncate=False))
+        print(resList_df.select(resList_df['result.sessionid']).show(5, truncate=False))
         #metaResults = nwdb.formatMetaResults(resList_df)
         #print(metaResults.show(10, truncate=False))
         #pivotResults = nwdb.formatMetaResultsPivot(resList_df)
