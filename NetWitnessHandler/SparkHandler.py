@@ -240,7 +240,7 @@ def main():
         #    sList.extend(i['value'])
         #print(sList)
         resList_df = nwdb.sparkMetaQuery(sessionList)
-        print(resList_df.select(resList_df['result']).show(5, truncate=False))
+        print(resList_df.select(resList_df['result']).show(1, truncate=False))
         #metaResults = nwdb.formatMetaResults(resList_df)
         #print(metaResults.show(10, truncate=False))
         #pivotResults = nwdb.formatMetaResultsPivot(resList_df)
