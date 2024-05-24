@@ -112,8 +112,8 @@ class SparkHandler:
 
     def sessionIdResponseGen(self, response):
         for i in response:
-            yield(i['sessionid'])
-            #yield(i)
+            #yield(i['sessionid'])
+            yield(i)
 
     #sessionIdList = sessionIdResponseGen(response)
 
