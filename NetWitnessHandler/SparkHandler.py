@@ -230,7 +230,7 @@ def main():
         nwdb.startSparkSession()
         sessionList = nwdb.createQueryArg(args.query)
         #print(sessionList[0])
-        print(sessionList[0])
+        print(sessionList)
         print(type(sessionList))
         print(len(sessionList))
         #for i in sessionList:
