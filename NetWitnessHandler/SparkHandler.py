@@ -218,7 +218,7 @@ def main():
               print(f"query: {args.query}")
         nwdb.startSparkSession()
         sessionList = nwdb.createQueryArg(args.query)
-        print(sessionList)
+        print(sessionList[0])
         #sList = []
         #for i in sessionList:
         #    sList.extend(i['value'])
