@@ -123,8 +123,8 @@ class SparkHandler:
                 #rec_list = []
             #print(res_list)
                     
-            return rec_list
-            #return res.json()
+            #return rec_list
+            return res.json()
         
         return None
 
