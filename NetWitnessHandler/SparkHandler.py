@@ -55,7 +55,7 @@ class SparkHandler:
       except Exception as e:
           print('SparkHandler::readConfig() Exception => ' + str(e) + '\n')
 
-    def sessionQuery(verb, url, query):
+    def sessionQuery(self, verb, url, query):
         res = None
         rec = {}
         rec_list = []
