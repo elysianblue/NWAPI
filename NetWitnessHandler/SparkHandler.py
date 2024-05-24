@@ -73,10 +73,10 @@ class SparkHandler:
         if res != None and res.status_code == 200:
             #res_tot = json.loads(res.text)
             #return res_tot[0]['results']['fields']
-            #for i in res.json():
-            #    res_list.extend(i['results']['fields'])
-            #return res_list
-            return res.json()
+            for i in res.json():
+                res_list.append(i['results']['fields'])
+            return res_list
+            #return res.json()
         
         return None
 
